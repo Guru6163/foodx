@@ -28,22 +28,23 @@ function Sidebar() {
         { title: "Settings", id: 9, route: "/settings", icon: CogIcon },
         { title: "Help and Support", id: 11, route: "/help", icon: QuestionMarkCircleIcon },
         { title: "Notifications", id: 12, route: "/notifications", icon: BellIcon },
+        { title: "Create Account", id: 12, route: "/create-account", icon: UsersIcon },
     ];
     return (
         <div className='bg-blue'>
-            <aside id="logo-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
-                <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
-                    <Link to="/" class="flex items-center pl-2.5 mb-5">
-                        <img src="https://flowbite.com/docs/images/logo.svg" class="h-6 mr-3 sm:h-7" alt="FoodX Logo" />
-                        <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FoodX</span>
+            <aside id="logo-sidebar" className="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+                <div className="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
+                    <Link to="/" className="flex items-center pl-2.5 mb-5">
+                        <img src="https://flowbite.com/docs/images/logo.svg" className="h-6 mr-3 sm:h-7" alt="FoodX Logo" />
+                        <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">FoodX</span>
                     </Link>
-                    <ul class="space-y-2 font-medium">
+                    <ul className="space-y-2 font-medium">
                         {menu.map((el) => {
                             return (
                                 <li>
-                                    <Link to={el.route} id={el.id} class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
+                                    <Link to={el.route} id={el.id} className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700">
                                         {<el.icon className='h-6 w-6' />}
-                                        <span class="ml-3">{el.title}</span>
+                                        <span className="ml-3">{el.title}</span>
                                     </Link>
                                 </li>
                             )

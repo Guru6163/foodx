@@ -141,7 +141,7 @@ const RestaurantForm = () => {
         <div className="mx-auto mt-8">
             <form className="space-y-2 p-6 border-2 shadow-md">
                 <div className="col-span-2 font-semibold gap-2">
-                    <label htmlFor="name">Restaurant Name</label>
+                    <label for="name">Restaurant Name</label>
                     <input
                         type="text"
                         id="name"
@@ -152,7 +152,7 @@ const RestaurantForm = () => {
                     />
                 </div>
                 <div className="col-span-2 font-semibold gap-2">
-                    <label htmlFor="address">Address</label>
+                    <label for="address">Address</label>
                     <input
                         type="text"
                         id="address"
@@ -163,7 +163,7 @@ const RestaurantForm = () => {
                     />
                 </div>
                 <div className="col-span-1 font-semibold gap-2">
-                    <label htmlFor="phone">Phone</label>
+                    <label for="phone">Phone</label>
                     <input
                         type="text"
                         id="phone"
@@ -174,7 +174,7 @@ const RestaurantForm = () => {
                     />
                 </div>
                 <div className="col-span-1 font-semibold gap-2">
-                    <label htmlFor="email">Email</label>
+                    <label for="email">Email</label>
                     <input
                         type="email"
                         id="email"
@@ -199,7 +199,7 @@ const RestaurantForm = () => {
                 <div className='border-2 shadow-sm p-2'>
                     {formData.menuItems.map((menuItem, index) => (
                         <div key={index} className="flex items-center justify-evenly font-semibold gap-2 space-y-2">
-                            <label htmlFor={`itemName${index}`}>Item Name</label>
+                            <label for={`itemName${index}`}>Item Name</label>
                             <input
                                 type="text"
                                 id={`itemName${index}`}
@@ -208,7 +208,7 @@ const RestaurantForm = () => {
                                 onChange={(e) => handleMenuItemChange(index, e)}
                                 className=" border  px-3 py-2 bg-gray-100"
                             />
-                            <label htmlFor={`quantity${index}`}>Quantity</label>
+                            <label for={`quantity${index}`}>Quantity</label>
                             <input
                                 type="text"
                                 id={`quantity${index}`}
@@ -217,7 +217,7 @@ const RestaurantForm = () => {
                                 onChange={(e) => handleMenuItemChange(index, e)}
                                 className=" border  px-3 py-2 bg-gray-100"
                             />
-                            <label htmlFor={`price${index}`}>Price</label>
+                            <label for={`price${index}`}>Price</label>
                             <input
                                 type="text"
                                 id={`price${index}`}
@@ -240,7 +240,7 @@ const RestaurantForm = () => {
 
                 {/* Add similar fields for other days */}
                 <div className="col-span-2 font-semibold gap-2">
-                    <label htmlFor="category">Category</label>
+                    <label for="category">Category</label>
                     <select
                         id="category"
                         name="category"
