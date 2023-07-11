@@ -1,0 +1,70 @@
+enum ResturantCategory {
+  VEG
+  NON_VEG
+  BOTH
+  JUICES
+}
+
+type OrderDish @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  quantity: Int!
+  orderID: ID! @index(name: "byOrder")
+  Dish: Dish @hasOne
+}
+
+enum OrderStatus {
+  NEW
+  COOKING
+  READY_FOR_PICKUP
+  PICKED_UP
+  DELIVERED
+}
+
+type Order @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  userID: ID! @index(name: "byUser")
+  status: OrderStatus
+  OrderDishes: [OrderDish] @hasMany(indexName: "byOrder", fields: ["id"])
+  Restaurant: Restaurant @hasOne
+  paymentMethod: String!
+  total: Int!
+  razorpayPaymentId: String
+  razorpayOrderId: String
+}
+
+type Dish @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  image: String
+  description: String
+  price: Int
+  restaurantID: ID! @index(name: "byRestaurant")
+}
+
+type Restaurant @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  image: String
+  deliveryFee: Int!
+  minDeliveryTime: String!
+  maxDeliveryTime: String!
+  rating: Float
+  adress: String
+  lat: Float
+  lng: Float
+  Dishes: [Dish] @hasMany(indexName: "byRestaurant", fields: ["id"])
+  category: ResturantCategory
+}
+
+type User @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String
+  phoneNumber: String
+  email: String
+  address: String
+  lat: Float
+  lng: Float
+  sub: String
+  Orders: [Order] @hasMany(indexName: "byUser", fields: ["id"])
+}
+ 

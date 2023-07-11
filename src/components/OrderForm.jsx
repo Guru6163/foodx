@@ -80,6 +80,7 @@ const OrderForm = () => {
 
     useEffect(() => {
         calculateTotalAmount();
+        console.log(selectedCustomer,selectedRestaurent)
     }, [order.items])
 
 
@@ -102,6 +103,8 @@ const OrderForm = () => {
         // Handle form submission here
         const modifiedOrder = {
             customerId: selectedCustomer.id,
+            customerName: selectedCustomer.full_name,
+            restaurantName:selectedRestaurent.name,
             restaurantId: selectedRestaurent.id,
             totalAmount: order.totalAmount,
             status: order.status,
@@ -119,6 +122,7 @@ const OrderForm = () => {
 
     useEffect(() => {
         getData()
+        
 
     }, [])
 
@@ -155,7 +159,7 @@ const OrderForm = () => {
                         </div>
                         <div className='border-2 shadow-sm p-2 m-2' style={{ maxHeight: '400px', overflowY: 'auto' }}>
                             {selectedRestaurent?.menuItems.map((menuItem, index) => {
-                                const quantity = order[`quantity${index}`] || "";
+                                let quantity = order[`quantity${index}`] || "";
                                 const totalPrice = (menuItem.price * quantity).toFixed(2);
                                 const buttonClass = quantity === 0 || quantity === "" ? "p-2 text-white bg-gray-600 rounded-sm" : "p-2 text-white bg-blue-600 rounded-sm";
 

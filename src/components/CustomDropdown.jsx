@@ -21,14 +21,18 @@ const CustomDropdown = ({ options, label, selectedValue, onSelectedValueChange, 
     setSearchValue(`${option[filterSearch1]} - ${option[filterSearch2]}`); // Set the selected value as the searchValue
     onSelectedValueChange(option); // Update the selected value
     setIsDropdownVisible(false); // Hide the dropdown after selecting an option
+
   };
 
   const handleOutsideClick = (event) => {
     // Close the dropdown when clicking outside of it
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setIsDropdownVisible(false);
+      // setSearchValue(''); // Clear the searchValue when closing the dropdown
+      
     }
   };
+  
 
   useEffect(() => {
     document.addEventListener('click', handleOutsideClick);
@@ -46,7 +50,8 @@ const CustomDropdown = ({ options, label, selectedValue, onSelectedValueChange, 
         <input
           type="text"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={(e) => { 
+            setSearchValue(e.target.value)}}
           onFocus={() => setIsDropdownVisible(true)}
           className="border  px-3 py-2 bg-gray-100 w-full"
           placeholder="Search..."

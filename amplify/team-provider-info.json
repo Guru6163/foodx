@@ -1,0 +1,30 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-foodx-staging-155126-authRole",
+      "UnauthRoleArn": "arn:aws:iam::209548852675:role/amplify-foodx-staging-155126-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::209548852675:role/amplify-foodx-staging-155126-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-foodx-staging-155126-deployment",
+      "UnauthRoleName": "amplify-foodx-staging-155126-unauthRole",
+      "StackName": "amplify-foodx-staging-155126",
+      "StackId": "arn:aws:cloudformation:eu-north-1:209548852675:stack/amplify-foodx-staging-155126/4c245ee0-1da7-11ee-bd27-0647fa237380",
+      "AmplifyAppId": "d1tmadi80vlrwj"
+    },
+    "categories": {
+      "auth": {
+        "FoodX": {}
+      },
+      "function": {
+        "foodx658cf509": {
+          "deploymentBucketName": "amplify-foodx-staging-155126-deployment",
+          "s3Key": "amplify-builds/foodx658cf509-506662664c325779497a-build.zip"
+        }
+      },
+      "api": {
+        "FoodX": {},
+        "api802ae06b": {}
+      }
+    }
+  }
+}

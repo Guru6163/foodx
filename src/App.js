@@ -20,7 +20,8 @@ function App() {
           <Route path='/login' element={<Login />} > </Route>
           <Route element={<DefaultLayout />}>
             <Route path='/' element={<Overview />} ></Route>
-            <Route path='/orders' element={<OrderForm />} ></Route>
+            <Route path='/orders' element={<Orders />} ></Route>
+            <Route path='/orders/new' element={<OrderForm />} ></Route>
             <Route path='/restuarent-partners' element={<RestaurentPartners />} ></Route>
             <Route path='/restuarent-partners/new' element={<RestaurantForm />}></Route>
             <Route path='/restuarent-partners/:id' element={<RestaurantForm />}></Route>
