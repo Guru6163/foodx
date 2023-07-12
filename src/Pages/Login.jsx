@@ -1,54 +1,30 @@
 import React, { useState } from 'react';
 import { auth, db } from '../Firebase/config';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
+import { Auth } from 'aws-amplify';
+import { useNavigate } from 'react-router-dom';
 
 
 function Login() {
-
+    const navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleEmailLogin = async (e) => {
-        e.preventDefault();
-        try {
-            const match =  findUserByEmailAndPassword(email, password)
-            // Do something with the userCredential if needed
-            console.log(match)
-        } catch (error) {
-            // Handle error
-            console.log(error);
-        }
-    };
-
-
-
-    const findUserByEmailAndPassword = async (email, password) => {
-        console.log(email,password)
-        try {
-            const collectionRef = db.collection('users');
-            
-            const querySnapshot = await collectionRef
-                .where('email', '==', email)
-                .where('password', '==', password)
-                .get();
-
-            
-
-            if (querySnapshot.empty) {
-                console.log('No matching user found.');
-                return null;
+        e.preventDefault()
+        async function signIn() {
+            try {
+                const user = await Auth.signIn(email, password);
+                console.log(user.attributes)
+                localStorage.setItem("userAttributes",JSON.stringify(user.attributes))
+                navigate("/")
+            } catch (error) {
+                console.log('error signing in', error);
             }
-
-            // Assuming email is unique, there should be only one matching user
-            const userDoc = querySnapshot.docs[0];
-            const userData = userDoc.data();
-            console.log('Found User:', querySnapshot);
-
-            return userData;
-        } catch (error) {
-            console.log('Error finding user in Firestore:', error);
         }
+        signIn()
     };
+
+
 
 
     return (

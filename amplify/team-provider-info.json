@@ -13,7 +13,8 @@
     },
     "categories": {
       "auth": {
-        "FoodX": {}
+        "FoodX": {},
+        "userPoolGroups": {}
       },
       "function": {
         "foodx658cf509": {

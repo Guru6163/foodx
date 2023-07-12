@@ -11,13 +11,31 @@ import UserForm from './components/UserForm';
 import Customers from './Pages/Customers';
 import CustomerForm from './components/CustomerForm';
 import OrderForm from './components/OrderForm';
+import { useEffect, useState } from 'react';
+import { Amplify } from 'aws-amplify';
+import { DataStore } from 'aws-amplify';
+import { User, Restaurant } from "./models"
+import awsconfig from "../src/aws-exports"
+import '@aws-amplify/ui-react/styles.css';
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import { useNavigate } from 'react-router-dom';
 
 function App() {
+  Amplify.configure(awsconfig)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem("userAttributes"))
+    setUser(user)
+
+  },[])
+
   return (
     <div className='bg-bgray-400'>
       <BrowserRouter >
         <Routes>
           <Route path='/login' element={<Login />} > </Route>
+
           <Route element={<DefaultLayout />}>
             <Route path='/' element={<Overview />} ></Route>
             <Route path='/orders' element={<Orders />} ></Route>
@@ -28,8 +46,7 @@ function App() {
             <Route path='/user-management' element={<UserManagement />}></Route>
             <Route path='/user-management/new' element={<UserForm />}></Route>
             <Route path='/customers' element={<Customers />}></Route>
-           <Route  path='/create-account' element={<CustomerForm />}></Route>
-
+            <Route path='/create-account' element={<CustomerForm />}></Route>
           </Route>
         </Routes>
       </BrowserRouter>
@@ -37,4 +54,4 @@ function App() {
   );
 }
 
-export default App;
+export default (App);
