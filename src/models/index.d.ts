@@ -108,6 +108,7 @@ type EagerDish = {
   readonly description?: string | null;
   readonly price?: number | null;
   readonly restaurantID: string;
+  readonly serving?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -123,6 +124,7 @@ type LazyDish = {
   readonly description?: string | null;
   readonly price?: number | null;
   readonly restaurantID: string;
+  readonly serving?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -150,6 +152,8 @@ type EagerRestaurant = {
   readonly lng?: number | null;
   readonly Dishes?: (Dish | null)[] | null;
   readonly category?: ResturantCategory | keyof typeof ResturantCategory | null;
+  readonly phoneNumber?: string | null;
+  readonly email?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }
@@ -171,6 +175,8 @@ type LazyRestaurant = {
   readonly lng?: number | null;
   readonly Dishes: AsyncCollection<Dish>;
   readonly category?: ResturantCategory | keyof typeof ResturantCategory | null;
+  readonly phoneNumber?: string | null;
+  readonly email?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
 }

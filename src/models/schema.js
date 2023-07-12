@@ -291,6 +291,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "serving": {
+                    "name": "serving",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -437,6 +444,20 @@ export const schema = {
                     "type": {
                         "enum": "ResturantCategory"
                     },
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "phoneNumber": {
+                    "name": "phoneNumber",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "email": {
+                    "name": "email",
+                    "isArray": false,
+                    "type": "String",
                     "isRequired": false,
                     "attributes": []
                 },
@@ -623,5 +644,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "b8ed5aed0803ee40f636aed13aa99da2"
+    "version": "2284155796f0d8220a06ebe073d6fbfc"
 };

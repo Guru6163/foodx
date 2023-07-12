@@ -24,6 +24,8 @@ export declare type RestaurantUpdateFormInputValues = {
     lat?: number;
     lng?: number;
     category?: string;
+    phoneNumber?: string;
+    email?: string;
 };
 export declare type RestaurantUpdateFormValidationValues = {
     name?: ValidationFunction<string>;
@@ -36,6 +38,8 @@ export declare type RestaurantUpdateFormValidationValues = {
     lat?: ValidationFunction<number>;
     lng?: ValidationFunction<number>;
     category?: ValidationFunction<string>;
+    phoneNumber?: ValidationFunction<string>;
+    email?: ValidationFunction<string>;
 };
 export declare type PrimitiveOverrideProps<T> = Partial<T> & React.DOMAttributes<HTMLDivElement>;
 export declare type RestaurantUpdateFormOverridesProps = {
@@ -50,6 +54,8 @@ export declare type RestaurantUpdateFormOverridesProps = {
     lat?: PrimitiveOverrideProps<TextFieldProps>;
     lng?: PrimitiveOverrideProps<TextFieldProps>;
     category?: PrimitiveOverrideProps<SelectFieldProps>;
+    phoneNumber?: PrimitiveOverrideProps<TextFieldProps>;
+    email?: PrimitiveOverrideProps<TextFieldProps>;
 } & EscapeHatchProps;
 export declare type RestaurantUpdateFormProps = React.PropsWithChildren<{
     overrides?: RestaurantUpdateFormOverridesProps | undefined | null;

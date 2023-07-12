@@ -40,6 +40,8 @@ export default function RestaurantUpdateForm(props) {
     lat: "",
     lng: "",
     category: "",
+    phoneNumber: "",
+    email: "",
   };
   const [name, setName] = React.useState(initialValues.name);
   const [image, setImage] = React.useState(initialValues.image);
@@ -57,6 +59,10 @@ export default function RestaurantUpdateForm(props) {
   const [lat, setLat] = React.useState(initialValues.lat);
   const [lng, setLng] = React.useState(initialValues.lng);
   const [category, setCategory] = React.useState(initialValues.category);
+  const [phoneNumber, setPhoneNumber] = React.useState(
+    initialValues.phoneNumber
+  );
+  const [email, setEmail] = React.useState(initialValues.email);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     const cleanValues = restaurantRecord
@@ -72,6 +78,8 @@ export default function RestaurantUpdateForm(props) {
     setLat(cleanValues.lat);
     setLng(cleanValues.lng);
     setCategory(cleanValues.category);
+    setPhoneNumber(cleanValues.phoneNumber);
+    setEmail(cleanValues.email);
     setErrors({});
   };
   const [restaurantRecord, setRestaurantRecord] =
@@ -97,6 +105,8 @@ export default function RestaurantUpdateForm(props) {
     lat: [],
     lng: [],
     category: [],
+    phoneNumber: [],
+    email: [],
   };
   const runValidationTasks = async (
     fieldName,
@@ -134,6 +144,8 @@ export default function RestaurantUpdateForm(props) {
           lat,
           lng,
           category,
+          phoneNumber,
+          email,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -199,6 +211,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.name ?? value;
@@ -232,6 +246,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.image ?? value;
@@ -269,6 +285,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.deliveryFee ?? value;
@@ -302,6 +320,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.minDeliveryTime ?? value;
@@ -335,6 +355,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.maxDeliveryTime ?? value;
@@ -372,6 +394,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.rating ?? value;
@@ -405,6 +429,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.adress ?? value;
@@ -442,6 +468,8 @@ export default function RestaurantUpdateForm(props) {
               lat: value,
               lng,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.lat ?? value;
@@ -479,6 +507,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng: value,
               category,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.lng ?? value;
@@ -512,6 +542,8 @@ export default function RestaurantUpdateForm(props) {
               lat,
               lng,
               category: value,
+              phoneNumber,
+              email,
             };
             const result = onChange(modelFields);
             value = result?.category ?? value;
@@ -547,6 +579,76 @@ export default function RestaurantUpdateForm(props) {
           {...getOverrideProps(overrides, "categoryoption3")}
         ></option>
       </SelectField>
+      <TextField
+        label="Phone number"
+        isRequired={false}
+        isReadOnly={false}
+        value={phoneNumber}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              image,
+              deliveryFee,
+              minDeliveryTime,
+              maxDeliveryTime,
+              rating,
+              adress,
+              lat,
+              lng,
+              category,
+              phoneNumber: value,
+              email,
+            };
+            const result = onChange(modelFields);
+            value = result?.phoneNumber ?? value;
+          }
+          if (errors.phoneNumber?.hasError) {
+            runValidationTasks("phoneNumber", value);
+          }
+          setPhoneNumber(value);
+        }}
+        onBlur={() => runValidationTasks("phoneNumber", phoneNumber)}
+        errorMessage={errors.phoneNumber?.errorMessage}
+        hasError={errors.phoneNumber?.hasError}
+        {...getOverrideProps(overrides, "phoneNumber")}
+      ></TextField>
+      <TextField
+        label="Email"
+        isRequired={false}
+        isReadOnly={false}
+        value={email}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              name,
+              image,
+              deliveryFee,
+              minDeliveryTime,
+              maxDeliveryTime,
+              rating,
+              adress,
+              lat,
+              lng,
+              category,
+              phoneNumber,
+              email: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.email ?? value;
+          }
+          if (errors.email?.hasError) {
+            runValidationTasks("email", value);
+          }
+          setEmail(value);
+        }}
+        onBlur={() => runValidationTasks("email", email)}
+        errorMessage={errors.email?.errorMessage}
+        hasError={errors.email?.hasError}
+        {...getOverrideProps(overrides, "email")}
+      ></TextField>
       <Flex
         justifyContent="space-between"
         {...getOverrideProps(overrides, "CTAFlex")}

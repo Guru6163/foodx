@@ -39,6 +39,7 @@ type Dish @model @auth(rules: [{allow: public}]) {
   description: String
   price: Int
   restaurantID: ID! @index(name: "byRestaurant")
+  serving: String
 }
 
 type Restaurant @model @auth(rules: [{allow: public}]) {
@@ -54,6 +55,8 @@ type Restaurant @model @auth(rules: [{allow: public}]) {
   lng: Float
   Dishes: [Dish] @hasMany(indexName: "byRestaurant", fields: ["id"])
   category: ResturantCategory
+  phoneNumber: String
+  email: String
 }
 
 type User @model @auth(rules: [{allow: public}]) {
