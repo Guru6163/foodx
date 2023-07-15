@@ -103,6 +103,21 @@ export const getDailyOrderTotalSales = async () => {
 };
 
   
+export const getTotalRevenueLast10Days = async () => {
+  const dailyOrderTotalSales = await getDailyOrderTotalSales();
+  const barChartData = await getOrdersDataForBarChart();
+
+  const totalRevenueData = [];
+
+  for (let i = 0; i < 10; i++) {
+    const sales = dailyOrderTotalSales[i].total;
+    const orders = barChartData[i].count;
+    const revenue = sales * orders;
+    totalRevenueData.push({ date: barChartData[i].date, revenue });
+  }
+
+  return totalRevenueData;
+};
 
   
 

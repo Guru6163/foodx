@@ -188,6 +188,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "restaurantName": {
+                    "name": "restaurantName",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -644,5 +651,5 @@ export const schema = {
     },
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "2284155796f0d8220a06ebe073d6fbfc"
+    "version": "272cde7ad2fbea2a4a7673fce2895a75"
 };

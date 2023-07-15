@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { auth, db } from '../Firebase/config';
 import { Auth } from 'aws-amplify';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, BrowserRouter as Router } from 'react-router-dom';
+
 
 
 function Login() {
@@ -9,21 +10,20 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleEmailLogin = async (e) => {
-        e.preventDefault()
+    const handleEmailLogin = (e) => {
+        e.preventDefault();
         async function signIn() {
             try {
                 const user = await Auth.signIn(email, password);
-                console.log(user.attributes)
-                localStorage.setItem("userAttributes",JSON.stringify(user.attributes))
-                navigate("/")
+                console.log(user.attributes);
+                localStorage.setItem('userAttributes', JSON.stringify(user.attributes));
+                navigate('/orders');
             } catch (error) {
                 console.log('error signing in', error);
             }
         }
-        signIn()
+        signIn();
     };
-
 
 
 
@@ -50,10 +50,11 @@ function Login() {
                                     <input onChange={(e) => setPassword(e.target.value)} type="password" name="password" id="password" placeholder="••••••••" className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm  focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 :bg-gray-700 -gray-600 :placeholder-gray-400  :focus:ring-blue-500 :focus:border-blue-500" required="" />
                                 </div>
                                 <div className='flex flex-col space-y-2'>
-                                    <button className='p-2 bg-blue-600 text-white'  >Sign in with Email</button>
+
                                 </div>
 
                             </form>
+                            <button onClick={handleEmailLogin} className='p-2 bg-blue-600 text-white'  >Sign in with Email</button>
                         </div>
                     </div>
                 </div>

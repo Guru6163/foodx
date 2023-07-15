@@ -67,6 +67,7 @@ type EagerOrder = {
   readonly total: number;
   readonly razorpayPaymentId?: string | null;
   readonly razorpayOrderId?: string | null;
+  readonly restaurantName?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly orderRestaurantId?: string | null;
@@ -86,6 +87,7 @@ type LazyOrder = {
   readonly total: number;
   readonly razorpayPaymentId?: string | null;
   readonly razorpayOrderId?: string | null;
+  readonly restaurantName?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly orderRestaurantId?: string | null;

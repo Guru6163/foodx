@@ -1,37 +1,36 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'primereact/chart';
-import { getTotalOrdersByRestaurant } from '../../apis/api';
+import { getOrdersDataForBarChart,getDailyOrderTotalSales  } from '../../apis/api';
 
-function OrdersByRestaurant() {
+function Last10DaySalesChart() {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
-    getTotalOrdersByRestaurant().then((res) => {
-      console.log(res)
+    getDailyOrderTotalSales().then((res) => {
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--text-color');
       const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
       const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
       // Transform the API response data into the format expected by the Chart component
       const data = {
-        labels: res.map((item) => item.restaurantName), // Array of date strings
+        labels: res.map((item) => item.date), // Array of date strings
         datasets: [
           {
             label: 'Order Count',
-            backgroundColor: [
-              '#FF6384', // Example color 1
-              '#36A2EB', // Example color 2
-              '#FFCE56', // Example color 3
-              // Add more colors as needed
-            ],
-            borderColor: [
-              '#FF6384', // Example color 1
-              '#36A2EB', // Example color 2
-              '#FFCE56', // Example color 3
-              // Add more colors as needed
-            ],
-            data: res.map((item) => item.orderCount), // Array of count values
+        backgroundColor: [
+          '#FF6384', // Example color 1
+          '#36A2EB', // Example color 2
+          '#FFCE56', // Example color 3
+          // Add more colors as needed
+        ],
+        borderColor: [
+          '#FF6384', // Example color 1
+          '#36A2EB', // Example color 2
+          '#FFCE56', // Example color 3
+          // Add more colors as needed
+        ],
+            data: res.map((item) => item.totalSales), // Array of count values
           },
         ],
       };
@@ -82,11 +81,11 @@ function OrdersByRestaurant() {
     <div>
 
       <div className="border-2 shadow-md">
-        <div className='text-center font-bold my-3'>Total Orders By Restaurants</div>
+        <div className='text-center font-bold my-3'>Last 10 Days Revenue</div>
         <Chart type="bar" className='p-2' data={chartData} options={chartOptions} />
       </div>
     </div>
   )
 }
 
-export default OrdersByRestaurant
+export default Last10DaySalesChart

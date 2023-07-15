@@ -23,7 +23,7 @@ function Sidebar() {
         { title: "Customers", id: 5, route: "/customers", icon: UserCircleIcon },
         { title: "Delivery", id: 4, route: "/delivery", icon: TruckIcon },
         { title: "User Management", id: 10, route: "/user-management", icon: UsersIcon },
-        { title: "Discounts and Promotions", id: 7, route: "/discounts", icon: TagIcon },
+        { title: "Map Zone", id: 7, route: "/map-zone", icon: TagIcon },
         { title: "Reports and Analytics", id: 8, route: "/reports", icon: ChartBarIcon },
         { title: "Settings", id: 9, route: "/settings", icon: CogIcon },
         { title: "Help and Support", id: 11, route: "/help", icon: QuestionMarkCircleIcon },

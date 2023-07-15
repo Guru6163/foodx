@@ -30,6 +30,7 @@ type Order @model @auth(rules: [{allow: public}]) {
   total: Int!
   razorpayPaymentId: String
   razorpayOrderId: String
+  restaurantName: String
 }
 
 type Dish @model @auth(rules: [{allow: public}]) {

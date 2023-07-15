@@ -31,6 +31,7 @@ const RestaurantForm = () => {
         maxDeliveryTime: '',
         minDeliveryTime: '',
         rating: '',
+        image: ''
     };
     const [visible, setVisible] = useState(false);
     const [formData, setFormData] = useState(initialFormData);
@@ -40,6 +41,7 @@ const RestaurantForm = () => {
         price: '',
         description: '',
         image: '',
+
     });
 
 
@@ -58,6 +60,7 @@ const RestaurantForm = () => {
                 minDeliveryTime: formData.minDeliveryTime,
                 phoneNumber: formData.phoneNumber,
                 email: formData.email,
+                image: formData.image
             })
         );
         console.log(post)
@@ -98,6 +101,7 @@ const RestaurantForm = () => {
                     updated.deliveryFee = parseInt(formData.deliveryFee);
                     updated.maxDeliveryTime = formData.maxDeliveryTime;
                     updated.minDeliveryTime = formData.minDeliveryTime;
+                    updated.image = formData.image;
                     updated.rating = parseInt(formData.rating);
                 })
             );
@@ -245,15 +249,31 @@ const RestaurantForm = () => {
                     />
                 </div>
                 <div className="col-span-1 font-semibold gap-2">
-                    <label htmlFor="deliveryFee">Delivery Fee</label>
-                    <input
-                        type="number"
-                        id="deliveryFee"
-                        name="deliveryFee"
-                        value={formData.deliveryFee}
-                        onChange={handleInputChange}
-                        className="w-full border px-3 py-2 bg-gray-100"
-                    />
+                    <div className="grid grid-cols-2 gap-2">
+                        <div>
+                            <label htmlFor="deliveryFee">Delivery Fee</label>
+                            <input
+                                type="number"
+                                id="deliveryFee"
+                                name="deliveryFee"
+                                value={formData.deliveryFee}
+                                onChange={handleInputChange}
+                                className="w-full border px-3 py-2 bg-gray-100"
+                            />
+                        </div>
+                        <div>
+                            <label htmlFor="image">Image Url</label>
+                            <input
+                                id="image"
+                                name="image"
+                                value={formData.image}
+                                onChange={handleInputChange}
+                                className="w-full border px-3 py-2 bg-gray-100"
+                            />
+                        </div>
+
+                    </div>
+
                 </div>
                 <div className="col-span-1 font-semibold gap-2">
                     <div className="grid grid-cols-4 gap-2">

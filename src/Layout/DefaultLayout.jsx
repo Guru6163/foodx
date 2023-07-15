@@ -11,10 +11,14 @@ const DefaultLayout = ({ children }) => {
       {location.pathname === "login" ? <Outlet /> : <div>
         <Sidebar />
         <div className='sm:ml-64 h-full'>
+          {/* <header className='bg-gray-800 flex p-4 justify-between' >
+            <div></div>
+            <div className='flex text-white cursor-pointer font-semibold'>Signout</div>
+          </header> */}
           <div className='m-4'>
-          <Outlet />
+            <Outlet />
           </div>
-          </div>
+        </div>
       </div>}
 
     </div>

@@ -19,8 +19,18 @@ function OrderBarChart() {
         datasets: [
           {
             label: 'Order Count',
-            backgroundColor: documentStyle.getPropertyValue('--blue-500'),
-            borderColor: documentStyle.getPropertyValue('--blue-500'),
+            backgroundColor: [
+              '#FF6384', // Example color 1
+              '#36A2EB', // Example color 2
+              '#FFCE56', // Example color 3
+              // Add more colors as needed
+            ],
+            borderColor: [
+              '#FF6384', // Example color 1
+              '#36A2EB', // Example color 2
+              '#FFCE56', // Example color 3
+              // Add more colors as needed
+            ],
             data: res.map((item) => item.count), // Array of count values
           },
         ],
