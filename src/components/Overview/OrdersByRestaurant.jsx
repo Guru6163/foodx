@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react'
 import { Chart } from 'primereact/chart';
-import { getOrdersDataForBarChart,getDailyOrderTotalSales } from '../../apis/api';
+import { getTotalOrdersByRestaurant } from '../../apis/api';
 
-function OrderBarChart() {
+function OrdersByRestaurant() {
   const [chartData, setChartData] = useState({});
   const [chartOptions, setChartOptions] = useState({});
 
   useEffect(() => {
-    getDailyOrderTotalSales().then(res=>console.log(res))
-    getOrdersDataForBarChart().then((res) => {
+    getTotalOrdersByRestaurant().then((res) => {
+      console.log(res)
       const documentStyle = getComputedStyle(document.documentElement);
       const textColor = documentStyle.getPropertyValue('--text-color');
       const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
       const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
       // Transform the API response data into the format expected by the Chart component
       const data = {
-        labels: res.map((item) => item.date), // Array of date strings
+        labels: res.map((item) => item.restaurantName), // Array of date strings
         datasets: [
           {
             label: 'Order Count',
             backgroundColor: documentStyle.getPropertyValue('--blue-500'),
             borderColor: documentStyle.getPropertyValue('--blue-500'),
-            data: res.map((item) => item.count), // Array of count values
+            data: res.map((item) => item.orderCount), // Array of count values
           },
         ],
       };
@@ -72,11 +72,11 @@ function OrderBarChart() {
     <div>
 
       <div className="border-2 shadow-md">
-        <div className='text-center font-bold my-3'>Orders Count</div>
+        <div className='text-center font-bold my-3'>Total Orders By Restaurants</div>
         <Chart type="bar" className='p-2' data={chartData} options={chartOptions} />
       </div>
     </div>
   )
 }
 
-export default OrderBarChart
+export default OrdersByRestaurant

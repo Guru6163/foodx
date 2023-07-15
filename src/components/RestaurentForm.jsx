@@ -56,6 +56,8 @@ const RestaurantForm = () => {
                 deliveryFee: parseInt(formData.deliveryFee),
                 maxDeliveryTime: formData.maxDeliveryTime,
                 minDeliveryTime: formData.minDeliveryTime,
+                phoneNumber: formData.phoneNumber,
+                email: formData.email,
             })
         );
         console.log(post)

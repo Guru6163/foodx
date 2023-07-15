@@ -16,6 +16,7 @@ function RestaurentPartners() {
     useEffect(() => {
         async function getAllRestaurants() {
             const orders = await DataStore.query(Restaurant)
+            console.log(orders)
             setAllRestaurants(orders);
         }
         getAllRestaurants()

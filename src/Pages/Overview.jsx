@@ -1,6 +1,6 @@
 import React from 'react'
 import OrderBarChart from '../components/Overview/OrdersBarChart'
-import RestaurentsPeiChart from '../components/Overview/RestuarentsPieChart'
+import OrdersByRestaurant from '../components/Overview/OrdersByRestaurant'
 
 function Overview() {
   return (
@@ -11,9 +11,8 @@ function Overview() {
         </div>
       </div>
       <div className='grid grid-cols-2 gap-10'>
-        {/* <RestaurentsPeiChart /> */}
         <OrderBarChart />
-        <OrderBarChart />
+        <OrdersByRestaurant/>
         
       </div>
     </div>

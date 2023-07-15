@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getAllUsers, getAllRestaurants,createOrder } from '../apis/api';
+import { getAllUsers,createOrder } from '../apis/api';
 import CustomDropdown from "../components/CustomDropdown"
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
@@ -43,7 +43,7 @@ const OrderForm = () => {
     const getData = async () => {
         try {
             const customers = await getAllUsers()
-            const restaurents = await getAllRestaurants()
+            const restaurents = getAllUsers()
             setAllCustomers(customers)
             setAllRestaurents(restaurents)
             console.log(customers, restaurents)
